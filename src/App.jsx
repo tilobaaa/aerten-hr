@@ -1,14 +1,18 @@
 
 
 import './App.css'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import Dashboard from './pages/Dashboard'
 
 function App() {
 
 
   return (
-    <div className=' flex flex-start'>
-      <p>let us start what we came into the room to do</p>
-    </div>
+   <Routes>
+    {/* for all home requests, it redirects them to the dashboard page and the replace ensures that they cannot go back to the / for better ux */}
+    <Route path='/' element={<Navigate to="/dashboard" replace/>}/>
+    <Route path="/dashboard" element={<Dashboard/>}/>
+   </Routes>
   )
 }
 

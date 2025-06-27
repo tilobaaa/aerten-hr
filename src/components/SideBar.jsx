@@ -10,7 +10,7 @@ import logoImg from "../assets/logo.png";
 
 const SideBar = () => {
   return (
-    <div className="w-1/6 p-8 flex flex-col h-screen border-r border-gray-200">
+    <div className="fixed w-56 p-8 flex flex-col h-screen border-r border-gray-200">
       <div className="flex items-center ">
         <img className="h-10 object-cover" src={logoImg} alt="" />
         <h3 className="">Aerten</h3>

@@ -1,11 +1,12 @@
 import React from 'react'
 
 import Inbox from './Inbox'
+import Request from './Request'
 
 
 const LeftSideDash = () => {
   return (
-    <div className='flex-2'>
+    <div className='flex-2 '>
         {/* sync with accounts */}
         <div className='flex gap-6 items-center border-1 border-[#80808025] rounded-xl p-6 my-4  '>
             
@@ -19,6 +20,7 @@ const LeftSideDash = () => {
         {/* inbox */}
        
         <Inbox/>
+        <Request/>
     </div>
   )
 } 

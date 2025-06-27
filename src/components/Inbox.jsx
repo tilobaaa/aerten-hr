@@ -52,7 +52,7 @@ const Inbox = () => {
         </div>
         <div className=" flex items-center justify-center">
           {activeSearch === "request" && (
-            <div className="flex flex-col items-center w-2/3 ">
+            <div className="flex flex-col items-center w-2/3 my-12 ">
               <img src="" alt="" className="w-15 h-15 rounded-full mb-4" />
               <p>Keep in sync with your accounting system</p>
               <p>

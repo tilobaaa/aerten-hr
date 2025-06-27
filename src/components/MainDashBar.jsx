@@ -4,7 +4,7 @@ import RightSideDash from "./RightSideDash";
 
 const MainDashBar = () => {
   return (
-    <div className="flex-11 py-4">
+    <div className="flex-11 py-4 ml-56">
       {/* top nav */}
       <Header />
       {/* main content */}

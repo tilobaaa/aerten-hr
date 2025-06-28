@@ -1,6 +1,7 @@
 import React from 'react'
 import { scheduleData } from '../assets/requestArray';
 import circlePng from '../assets/circle.png';
+import greenDotSvg from '../assets/green_dot.svg'
 
 const RightSideDash = () => {
   return (
@@ -43,6 +44,47 @@ const RightSideDash = () => {
           <div className='p-4 flex-1 flex flex-col gap-4 border-1 rounded-md border-[#EAECF0] bg-[#FCFCFC]'>
             <p className='text-xs'>Used</p>
             <p className='text-[#EE6352] text-xl font-bold'>0 days</p>
+          </div>
+        </div>
+      </div>
+      {/* Attendance summary */}
+      <div className='flex flex-col gap-6 p-4 border-1 border-[#F2F2F2] rounded-xl '>
+        <div className='flex justify-between  '>
+          <p className='text-lg text-bold'>Alternative Summary</p>
+          <p className='px-2 py-1 bg-[#F2F2F2] rounded-2xl text-xs'>October</p>
+        </div>
+        <div>
+          <div className='flex justify-between border-b-1 border-[#EAECF0] py-2'>
+            <div className='flex items-center gap-1 w-full'>
+              <img className='w-2 h-2'  src={greenDotSvg} alt="" />
+              <p className='text-sm text-[#808080]'>22 Jan 2022</p>
+            </div>
+            {/* badge */}
+            <p className='px-2 py-1 rounded-2xl bg-[#F2F4F7] text-xs '>0</p>
+          </div>
+           <div className='flex justify-between border-b-1 border-[#EAECF0] py-2'>
+            <div className='flex items-center gap-1 w-full'>
+              <img className='w-2 h-2'  src={greenDotSvg} alt="" />
+              <p className='text-sm text-[#808080]'>Days with incomplete records</p>
+            </div>
+            {/* badge */}
+            <p className='px-2 py-1 rounded-2xl bg-[#F2F4F7] text-xs '>0</p>
+          </div>
+           <div className='flex justify-between border-b-1 border-[#EAECF0] py-2'>
+            <div className='flex items-center gap-1 w-full'>
+              <img className='w-2 h-2'  src={greenDotSvg} alt="" />
+              <p className='text-sm text-[#808080]'>Days with incomplete records</p>
+            </div>
+            {/* badge */}
+            <p className='px-2 py-1 rounded-2xl bg-[#F2F4F7] text-xs '>0</p>
+          </div>
+           <div className='flex justify-between border-b-1 border-[#EAECF0] py-2'>
+            <div className='flex items-center gap-1 w-full'>
+              <img className='w-2 h-2'  src={greenDotSvg} alt="" />
+              <p className='text-sm text-[#808080]'>Days with incomplete records</p>
+            </div>
+            {/* badge */}
+            <p className='px-2 py-1 rounded-2xl bg-[#F2F4F7] text-xs '>0</p>
           </div>
         </div>
       </div>

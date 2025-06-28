@@ -6,7 +6,7 @@ import redDotSvg from "../assets/red_dot.svg";
 
 const Request = () => {
   return (
-    <div className="w-full my-11  border-1 rounded-xl border-[#F2F2F2]">
+    <div className="w-full mt-11  border-1 rounded-xl border-[#F2F2F2]">
       <div className="py-4 px-3 flex justify-between items-center">
         <h4 className="text-gray-900 text-xl font-bold">Your Requests</h4>
         <button className="flex items-center gap-1 text-sm text-[#344054] px-2 py-1 border-1 border-gray-300 rounded-lg">

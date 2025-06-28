@@ -1,8 +1,8 @@
 import React from "react";
-import plusSvg from "../assets/plus.svg";
-import requestArray from "../assets/requestArray";
-import greenDotSvg from "../assets/green_dot.svg";
-import redDotSvg from "../assets/red_dot.svg";
+import plusSvg from "../../assets/plus.svg";
+import requestArray from "../../assets/requestArray";
+import greenDotSvg from "../../assets/green_dot.svg";
+import redDotSvg from "../../assets/red_dot.svg";
 
 const Request = () => {
   return (

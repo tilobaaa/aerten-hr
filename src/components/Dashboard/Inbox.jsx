@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import searchSvg from "../assets/search.svg";
+import searchSvg from "../../assets/search.svg";
 
 const Inbox = () => {
   const [activeSearch, setActiveSearch] = useState("request");

@@ -1,12 +1,11 @@
-import Header from "./Header";
+import Header from "../Header";
 import LeftSideDash from "./LeftSideDash";
 import RightSideDash from "./RightSideDash";
 
 const MainDashBar = () => {
   return (
-    <div className="flex-11 py-4 ml-56">
-      {/* top nav */}
-      <Header />
+    <div className=" w-full">
+   
       {/* main content */}
       <div className="p-12">
         <div className="w-full ">

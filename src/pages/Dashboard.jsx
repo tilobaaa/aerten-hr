@@ -1,14 +1,13 @@
-import React from 'react'
-import SideBar from '../components/SideBar'
-import MainDashBar from '../components/MainDashBar'
+import React from "react";
+import SideBar from "../components/SideBar";
+import MainDashBar from "../components/Dashboard/MainDashBar";
 
 const Dashboard = () => {
   return (
-    <div className='flex'>
-        <SideBar/>
-        <MainDashBar/>
+    <div>
+      <MainDashBar />
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

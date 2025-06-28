@@ -1,7 +1,7 @@
 import React from 'react'
-import { scheduleData } from '../assets/requestArray';
-import circlePng from '../assets/circle.png';
-import greenDotSvg from '../assets/green_dot.svg'
+import { scheduleData } from '../../assets/requestArray';
+import circlePng from '../../assets/circle.png';
+import greenDotSvg from '../../assets/green_dot.svg'
 
 const RightSideDash = () => {
   return (

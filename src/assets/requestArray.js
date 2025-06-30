@@ -31,3 +31,15 @@ export const scheduleData = [
   { id:'e21',time: "08:00 AM - 04:00 PM", location: "HEAD OFFICE" },
   { id:'e22',time: "08:00 AM - 04:00 PM", location: "HEAD OFFICE" }
 ];
+
+export const employees = [
+  {
+    name: 'Tanner Finsha',
+    email:'Tannerfisher@gmail.com',
+    id:'23454GH6J7YT6',
+    role: 'Product Designer',
+    jobTypes: 'Full time',
+    status:'Active',
+    teams:['Marketing', 'Design', 'Engineering']
+  }
+];

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { employees } from "../../assets/requestArray";
 import employeeAvatarPng from "../../assets/employee-avatar.png";
-import greenDotSvg from '../../assets/green_dot.svg'
-import redDotSvg from '../../assets/red_dot.svg'
+import greenDotSvg from "../../assets/green_dot.svg";
+import redDotSvg from "../../assets/red_dot.svg";
+import verticalSvg from '../../assets/more-vertical.svg';
 
 const EmployeeList = () => {
   const [selectedIds, setSelectedIds] = useState([]);
@@ -45,10 +46,10 @@ const EmployeeList = () => {
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         {employees.map((emp) => (
-          <tr key={emp.id}>
-            <td className="py-4 px-6 flex items-center">
+          <tr className="border-b-1 border-[#EFF1F4] rounded-xl" key={emp.id}>
+            <td className="p-6 flex items-center ">
               <input
                 className="border-1 border-[#D0D5DD] bg-white rounded-md "
                 checked={selectedIds.includes(emp.id)}
@@ -77,13 +78,34 @@ const EmployeeList = () => {
               </div>
             </td>
             <td>
-                <div className={`w-fit flex gap-1 rounded-2xl py-[0.125rem] px-2 ${emp.status === 'Active' ? "bg-[#ecfdf3]" : "bg-[#fff2ea]"}`}>
-                    <img src={emp.status === 'Active' ? greenDotSvg: redDotSvg} alt="" />
-                <p className={`text-xs ${emp.status === 'Active'? 'text-[#027a48]':'text-[#f15046]'}`}>{emp.status}</p>
-                </div>
+              <div
+                className={`w-fit flex gap-1 rounded-2xl py-[0.125rem] px-2 ${
+                  emp.status === "Active" ? "bg-[#ecfdf3]" : "bg-[#fff2ea]"
+                }`}
+              >
+                <img
+                  src={emp.status === "Active" ? greenDotSvg : redDotSvg}
+                  alt=""
+                />
+                <p
+                  className={`text-xs ${
+                    emp.status === "Active"
+                      ? "text-[#027a48]"
+                      : "text-[#f15046]"
+                  }`}
+                >
+                  {emp.status}
+                </p>
+              </div>
+            </td>
+            <td className="text-xs flex gap-1">
+                <p className="text-[#091E42] rounded-2xl px-2 py-[0.125rem] bg-[#F5F6F7] w-fit">{emp.teams[0]}</p>
+                {emp.teams.length > 1 && <p className="text-[#6a1039] rounded-2xl px-2 py-[0.125rem] bg-[#F7E8EF] w-fit">{emp.teams[1]}</p>}
+                {emp.teams.length > 2 && <p className="text-[#344054] rounded-2xl px-2 py-[0.125rem] bg-[#F2F4F7] w-fit">{`+ ${emp.teams.length - 2}`}</p>}
                 </td>
-            <td>{emp.teams.join(", ")}</td>
-            <td></td>
+            <td>
+                <img src={verticalSvg} alt="" />
+            </td>
           </tr>
         ))}
       </tbody>

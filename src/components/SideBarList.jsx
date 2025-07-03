@@ -7,7 +7,7 @@ const SideBarList = ({ item, icon}) => {
   return (
     <NavLink to={`/${item.toLowerCase()}`}>
       {({ isActive }) => (
-        <div className={`w-fit p-2 rounded-full flex items-center gap-4 hover:scale-105 transition-all duration-500 ${isActive ? "bg-[#9A4C1E] text-white" : "text-[#091e42]"}`}>
+        <div className={`w-fit py-2 px-4 rounded-full flex items-center gap-4 hover:scale-105 transition-all duration-500 ${isActive ? "bg-[#9A4C1E] text-white" : "text-[#091e42]"}`}>
           <div>
             <div>{icon}</div>
           </div>

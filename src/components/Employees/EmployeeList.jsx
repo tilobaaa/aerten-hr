@@ -97,7 +97,7 @@ const EmployeeList = () => {
             >
               <td className="p-6 flex items-center ">
                 <input
-                  className="border-1 border-[#D0D5DD] bg-white rounded-md "
+                  className="border-1 border-[#D0D5DD] bg-white rounded-md w-5 h-5"
                   checked={selectedIds.includes(emp.id)}
                   onChange={() => toggleSelectOne(emp.id)}
                   type="checkbox"
@@ -174,29 +174,29 @@ const EmployeeList = () => {
                   {activeDropdownId === emp.id && (
                     <div
                       ref={dropdownRef}
-                      className="flex flex-col absolute right-0 bg-[#ffffff] z-10 shadow-2xs"
+                      className="flex flex-col absolute right-0 bg-[#ffffff] z-10 shadow-s"
                     >
                       <Link to={`/employee/${emp.id}/profile`} className="flex gap-3 px-4 py-[0.62rem] border-b-1 border-[#5d6b8210] cursor-pointer hover:bg-gray-100">
                         <img className="w-4 h-4" src={userSvg} alt="" />
-                        <p className="text-sm font-medium text-[#5d6b827e]">
+                        <p className="text-sm font-medium text-[#5d6b82]">
                           View Profile
                         </p>
                       </Link>
                       <div className="flex gap-3 px-4 py-[0.62rem] border-b-1 border-[#5d6b8210] cursor-pointer hover:bg-gray-100">
                         <img className="w-4 h-4" src={usersSvg} alt="" />
-                        <p className="text-sm font-medium text-[#5d6b827e]">
+                        <p className="text-sm font-medium text-[#5d6b82]">
                           Add to team
                         </p>
                       </div>
                       <div className="flex gap-3 px-4 py-[0.62rem] border-b-1 border-[#5d6b8210] cursor-pointer hover:bg-gray-100">
                         <img className="w-4 h-4" src={editSvg} alt="" />
-                        <p className="text-sm font-medium text-[#5d6b827e]">
+                        <p className="text-sm font-medium text-[#5d6b82]">
                           Edit employee
                         </p>
                       </div>
                       <div className="flex gap-3 px-4 py-[0.62rem] border-b-1 border-[#5d6b8210] cursor-pointer hover:bg-gray-100">
                         <img className="w-4 h-4" src={userPlusSvg} alt="" />
-                        <p className="text-sm font-medium text-[#5d6b827e]">
+                        <p className="text-sm font-medium text-[#5d6b82]">
                           Assign a role
                         </p>
                       </div>

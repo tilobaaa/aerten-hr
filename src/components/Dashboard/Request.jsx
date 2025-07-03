@@ -9,7 +9,7 @@ const Request = () => {
     <div className="w-full mt-11  border-1 rounded-xl border-[#F2F2F2]">
       <div className="py-4 px-3 flex justify-between items-center">
         <h4 className="text-gray-900 text-xl font-bold">Your Requests</h4>
-        <button className="flex items-center gap-1 text-sm text-[#344054] px-2 py-1 border-1 border-gray-300 rounded-lg">
+        <button className="flex items-center gap-1 text-sm text-[#344054] px-2 py-1 border-1 border-gray-300 rounded-lg cursor-pointer duration-500 scale-y-105 ">
           <img src={plusSvg} alt="" />
           <p>New Request</p>
         </button>
@@ -56,7 +56,7 @@ const Request = () => {
                   <p className="text-sm text-[#42526D]">
                     {req.dateRequested.date}
                   </p>
-                  <p className="text-xs text-[#B3B3B3">
+                  <p className="text-xs text-[#B3B3B3]">
                     {req.dateRequested.time}
                   </p>
                 </div>

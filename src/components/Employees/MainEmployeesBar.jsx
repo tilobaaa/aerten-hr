@@ -21,11 +21,11 @@ const MainEmployeesBar = () => {
           </p>
         </div>
         <div className="flex gap-2">
-          <button className="py-2 px-4 flex items-center gap-2 border-1 border-[#E6E7EC] rounded-lg">
+          <button className="py-2 px-4 flex items-center gap-2 border-1 border-[#E6E7EC] rounded-lg cursor-pointer scale-105 transition-all duration-500">
             <img className="w-4 h-4" src={downloadSvg} alt="" />
             <p className="text-sm text-[#0E2354]">Export</p>
           </button>
-          <button className="py-2 px-4 flex items-center gap-2 bg-[#6A1039]  rounded-lg">
+          <button className="py-2 px-4 flex items-center gap-2 bg-[#6A1039]  rounded-lg cursor-pointer scale-105 transition-all duration-500">
             <img className="w-4 h-4" src={addSvg} alt="" />
             <p className="text-sm text-white">New Employee</p>
           </button>

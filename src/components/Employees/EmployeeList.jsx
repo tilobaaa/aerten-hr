@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { employees } from "../../assets/requestArray";
 import employeeAvatarPng from "../../assets/employee-avatar.png";
 import greenDotSvg from "../../assets/green_dot.svg";
 import redDotSvg from "../../assets/red_dot.svg";
 import verticalSvg from "../../assets/more-vertical.svg";
+import userSvg from "../../assets/user.svg";
+import usersSvg from "../../assets/users.svg";
+import userPlusSvg from "../../assets/user-plus.svg";
+import editSvg from "../../assets/edit-2.svg";
 import { Pagination } from "../Pagination";
+import { Link } from "react-router-dom";
 
 const EmployeeList = () => {
   const [selectedIds, setSelectedIds] = useState([]);
+
+  const [activeDropdownId, setActiveDropdownId] = useState(null);
 
   const isAllSelected = selectedIds.length === employees.length;
 
@@ -44,6 +51,23 @@ const EmployeeList = () => {
     }
   };
 
+  //dropdown
+
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setActiveDropdownId(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div>
       <table className="w-full text-left">
@@ -67,7 +91,10 @@ const EmployeeList = () => {
         </thead>
         <tbody>
           {paginatedEmployees.map((emp) => (
-            <tr className="border-b-1 border-[#EFF1F4] rounded-xl" key={emp.id}>
+            <tr
+              className="border-b-1 border-[#EFF1F4] rounded-xl relative"
+              key={emp.id}
+            >
               <td className="p-6 flex items-center ">
                 <input
                   className="border-1 border-[#D0D5DD] bg-white rounded-md "
@@ -133,10 +160,49 @@ const EmployeeList = () => {
                 )}
               </td>
               <td>
-                <button className="rounded-md bg-[#eff1f4]">
-                  <img src={verticalSvg} alt="" />
+                <button className={`rounded-md ${activeDropdownId === emp.id && 'bg-[#eff1f4]'} `}>
+                  <img
+                    onClick={() => {
+                      setActiveDropdownId(
+                        activeDropdownId === emp.id ? null : emp.id
+                      );
+                    }}
+                    className="cursor-pointer"
+                    src={verticalSvg}
+                    alt=""
+                  />
+                  {activeDropdownId === emp.id && (
+                    <div
+                      ref={dropdownRef}
+                      className="flex flex-col absolute right-0 bg-[#ffffff] z-10 shadow-2xs"
+                    >
+                      <Link to={`/employee/${emp.id}/profile`} className="flex gap-3 px-4 py-[0.62rem] border-b-1 border-[#5d6b8210] cursor-pointer hover:bg-gray-100">
+                        <img className="w-4 h-4" src={userSvg} alt="" />
+                        <p className="text-sm font-medium text-[#5d6b827e]">
+                          View Profile
+                        </p>
+                      </Link>
+                      <div className="flex gap-3 px-4 py-[0.62rem] border-b-1 border-[#5d6b8210] cursor-pointer hover:bg-gray-100">
+                        <img className="w-4 h-4" src={usersSvg} alt="" />
+                        <p className="text-sm font-medium text-[#5d6b827e]">
+                          Add to team
+                        </p>
+                      </div>
+                      <div className="flex gap-3 px-4 py-[0.62rem] border-b-1 border-[#5d6b8210] cursor-pointer hover:bg-gray-100">
+                        <img className="w-4 h-4" src={editSvg} alt="" />
+                        <p className="text-sm font-medium text-[#5d6b827e]">
+                          Edit employee
+                        </p>
+                      </div>
+                      <div className="flex gap-3 px-4 py-[0.62rem] border-b-1 border-[#5d6b8210] cursor-pointer hover:bg-gray-100">
+                        <img className="w-4 h-4" src={userPlusSvg} alt="" />
+                        <p className="text-sm font-medium text-[#5d6b827e]">
+                          Assign a role
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </button>
-                
               </td>
             </tr>
           ))}

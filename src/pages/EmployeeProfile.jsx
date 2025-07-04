@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import editSvg from "../assets/edit-2.svg";
 import helpSvg from "../assets/help-circle.svg";
 import moreVerticalSvg from "../assets/more-horizontal.svg";
+import General from "../components/Employees/Profile/General";
 
 const EmployeeProfile = () => {
   const { id } = useParams();
@@ -50,6 +51,11 @@ const EmployeeProfile = () => {
         <button onClick={()=>{setClickedOption('performance')}} className={`cursor-pointer text-sm font-medium pb-1 ${clickedOption === 'performance' ? 'text-[#6a1039] border-b-1 border-[#6a1039]':'text-[#667085]' }`}>Performance</button>
         <button onClick={()=>{setClickedOption('salary')}} className={`cursor-pointer text-sm font-medium pb-1 ${clickedOption === 'salary' ? 'text-[#6a1039] border-b-1 border-[#6a1039]':'text-[#667085]' }`}>Salary and benefits</button>
         <button onClick={()=>{setClickedOption('feedback')}} className={`cursor-pointer text-sm font-medium pb-1 ${clickedOption === 'feedback' ? 'text-[#6a1039] border-b-1 border-[#6a1039]':'text-[#667085]' }`}>Feedback</button>
+      </div>
+
+      {/* content */}
+      <div>
+        <General/>
       </div>
     </div>
   );

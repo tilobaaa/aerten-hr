@@ -33,7 +33,7 @@ const All = () => {
           </div>
 
           {/* manager */}
-          <div className="flex items-center">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <img className="w-[2.125rem] h-[2.125rem] rounded-full"  src={employeeAvatar} alt="" />
               <div className="flex flex-col text-sm mr-8">

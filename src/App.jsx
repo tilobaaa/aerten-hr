@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Employees from "./pages/Employees";
 import Layout from "./components/Layout";
+import Roles from './pages/Roles'
 import EmployeeProfile from "./pages/EmployeeProfile";
 
 function App() {
@@ -14,13 +15,15 @@ function App() {
       {/* Layout wrapper */}
       <Route element={<Layout />}>
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/roles" element={<Dashboard />} />
+        
         <Route path="/employees" element={<Employees />} />
         <Route path="/employee/:id/profile" element={<EmployeeProfile />} />
         <Route path="/payroll" element={<Dashboard />} />
         <Route path="/reports" element={<Dashboard />} />
         <Route path="/settings" element={<Dashboard />} />
       </Route>
+
+      <Route path="/roles" element={<Roles />} />
     </Routes>
   );
 }

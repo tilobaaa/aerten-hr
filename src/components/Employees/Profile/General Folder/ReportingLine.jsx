@@ -42,7 +42,7 @@ const ReportingLine = () => {
 
       {/* role and responsibility */}
       <div className="border-1 border-[#eff1f4] rounded-[0.625rem] pt-[1.57rem] pl-[1.38rem] pr-[0.87rem] mt-[1.13rem] mb-[2.69rem] ">
-        <p className="text-[#243757] text-lg font-black h-[2.387rem">Role and Responsibilities</p>
+        <p className="text-[#243757] text-lg font-black h-[2.387rem]">Role and Responsibilities</p>
         <p className="text-[#505f79] text-[1rem] mb-[4.84rem]" >
             Designing products, organizing team meeting, screening and hiring product designers of all levels
         </p>

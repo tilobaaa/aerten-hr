@@ -410,3 +410,34 @@ export const employees = [
     teams: ["Admin", "Maintenance"],
   },
 ];
+
+
+export const roles = [
+  {
+    id: "EMP001",
+    role: "Solution Sales Specialist",
+    desc:"Responsible for driving revenue growth by identifying and pursuing new business opportunities, as well as maintaining relationships with existing clients. working closely with customers to understand their needs and provide solutions that meet or exceed their expectations, while also achieving the company's sales goals.",
+    teams: ['Marketing', 'Product', 'Engineering', 'Design'],
+  },
+    {
+    id: "EMP002",
+    role: "Frontend Developer",
+    desc:
+      "Responsible for building and maintaining the user interface of web applications. Works closely with designers and backend developers to implement responsive, accessible, and performant user experiences using modern frontend technologies.",
+    teams: ["Engineering"],
+  },
+   {
+    id: "EMP003",
+    role: "Customer Success Manager",
+    desc:
+      "Ensures customers achieve their desired outcomes through the company’s products or services. Builds strong relationships, provides onboarding and training, handles escalations, and gathers feedback to improve customer satisfaction and retention.",
+    teams: ["Customer Support"],
+  },
+  {
+    id: "EMP004",
+    role: "Data Analyst",
+    desc:
+      "Collects, processes, and analyzes data to provide actionable insights for business decisions. Collaborates with different departments to identify trends, create reports, and support strategic planning with data-driven recommendations.",
+    teams: ["Product", "Engineering", "Marketing", "Operations"],
+  },
+]

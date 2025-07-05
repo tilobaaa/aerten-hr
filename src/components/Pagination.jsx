@@ -35,8 +35,8 @@ export function Pagination({ currentPage, totalPages, goToPage }) {
         <button
           key={page}
           onClick={() => goToPage(page)}
-          className={`px-3 py-1 border rounded ${
-            currentPage === page ? "bg-blue-500 text-white" : "text-gray-700"
+          className={`p-4 text-sm font-semibold cursor-pointer rounded-lg ${
+            currentPage === page ? "bg-[#eef1f4] text-[#091e42]" : "text-[#667085]"
           }`}
         >
           {page}

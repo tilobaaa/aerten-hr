@@ -15,7 +15,7 @@ const All = () => {
             <p className="text-[#091e42] text-lg font-black ">{role.role}</p>
             <div>{/* of the people */}</div>
           </div>
-          <p className="pt-5 text-sm font-medium text-[#667085] w-[29.0625rem]">
+          <p className="pt-3 text-sm font-medium text-[#667085] w-[29.0625rem]">
             {role.desc}
           </p>
           <div className="flex gap-3 items-center py-4">
@@ -42,7 +42,7 @@ const All = () => {
               </div>
             </div>
             <button className="cursor-pointer">
-                <img className="w-4 h-4" src={arrowRightSvg} alt="" />
+                <img className="w-8 h-8" src={arrowRightSvg} alt="" />
             </button>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SideBar from "../components/SideBar";
-import Header from "../components/Header";
 import bellSvg from "../assets/bell.svg";
 import searchSvg from "../assets/search.svg";
 import settingsSvg from "../assets/settings.svg";

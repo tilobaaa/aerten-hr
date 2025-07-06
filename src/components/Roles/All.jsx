@@ -2,6 +2,7 @@ import React from "react";
 import { roles } from "../../assets/requestArray";
 import employeeAvatar from "../../assets/employee-avatar.png";
 import arrowRightSvg from '../../assets/arrow-right.svg'
+import { Link } from "react-router-dom";
 
 const All = () => {
   return (
@@ -41,9 +42,9 @@ const All = () => {
                 <p className="text-[#909dad]">Manager</p>
               </div>
             </div>
-            <button className="cursor-pointer">
+            <Link to={`/roles/${role.id}`} className="cursor-pointer">
                 <img className="w-8 h-8" src={arrowRightSvg} alt="" />
-            </button>
+            </Link>
           </div>
         </div>
       ))}

@@ -5,6 +5,7 @@ import Employees from "./pages/Employees";
 import Layout from "./components/Layout";
 import Roles from './pages/Roles'
 import EmployeeProfile from "./pages/EmployeeProfile";
+import RolesDetails from "./pages/RolesDetails";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       </Route>
 
       <Route path="/roles" element={<Roles />} />
+      <Route path="/roles/:id" element={<RolesDetails/>}/>
     </Routes>
   );
 }

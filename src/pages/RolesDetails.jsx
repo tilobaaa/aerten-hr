@@ -10,7 +10,7 @@ import editSvg from "../assets/edit-2.svg";
 import leftArrow from "../assets/arrow-left.svg";
 import { useParams, Link } from "react-router-dom";
 import Details1 from "../components/Role Details/Details1";
-import Permissions from "../components/Role Details/permissions";
+import Permission from "../components/Role Details/Permission";
 
 const RolesDetails = () => {
   const { id } = useParams();
@@ -75,7 +75,7 @@ const RolesDetails = () => {
 
           <div className="w-full flex gap-[1.88rem]">
             <Details1 />
-            <Permissions/>
+            <Permission />
           </div>
         </div>
       </main>

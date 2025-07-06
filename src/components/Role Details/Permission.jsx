@@ -2,7 +2,7 @@ import React from "react";
 import editSvg from '../../assets/edit-2.svg'
 import ToggleButton from "../utilities/ToggleButton";
 
-const Permissions = () => {
+const Permission = () => {
   return (
     <div className="basis-1/2 border-1 border-[#dff2e6] px-[2.44rem] py-[1.96rem] rounded-[0.9375rem]">
       <div className="pb-8 mb-8 border-b-1 border-[#eaecf0] flex justify-between">
@@ -24,4 +24,4 @@ const Permissions = () => {
   );
 };
 
-export default Permissions;
+export default Permission;

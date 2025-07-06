@@ -1,5 +1,6 @@
 import React from "react";
 import editSvg from '../../assets/edit-2.svg'
+import ToggleButton from "../utilities/ToggleButton";
 
 const Permissions = () => {
   return (
@@ -11,6 +12,13 @@ const Permissions = () => {
           src={editSvg}
           alt=""
         />
+      </div>
+
+      <div>
+        <div>
+            
+        </div>
+        <ToggleButton/>
       </div>
     </div>
   );

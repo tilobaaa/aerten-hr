@@ -11,6 +11,7 @@ import filterSvg from "../assets/filters-lines.svg";
 import listUnordered from "../assets/list_unordered.svg";
 import elementSvg from "../assets/element.svg";
 import All from "../components/Roles/All";
+import Permissions from "../components/Roles/Permissions";
 
 const Roles = () => {
   const [clickedOption, setClickedOption] = useState("all");
@@ -98,126 +99,135 @@ const Roles = () => {
               Permissions
             </button>
           </div>
-          {/* search roles */}
-          <div className="flex justify-between px-4 border-1 border-[#EFF1F4] rounded-[0.43rem] my-[0.69rem] ">
-            <div className="relative p-4 w-[30.1875rem]">
-              <img
-                className="absolute w-4 h-4 top-1/2 -translate-1/2"
-                src={searchSvg}
-                alt=""
-              />
-              <input
-                className="text-sm ml-6 focus:outline-none w-full"
-                type="text"
-                placeholder="Search Roles by Title, Teams or any related keywords"
-              />
-            </div>
-            <div className="flex gap-2 items-center">
-              <button className="py-[0.62rem] px-4 flex gap-2 rounded-lg border-1 border-[#EFEFEF] ">
-                <img className="w-5 h-5" src={filterSvg} alt="" />
-                <p className="text-sm text-[#344054]">Filter</p>
-              </button>
-              <button className="py-[0.62rem] px-4 flex gap-2 rounded-lg bg-[#EFEFEF] ">
-                <img className="w-6 h-6" src={listUnordered} alt="" />
-              </button>
-              <button className="py-[0.62rem] px-4 flex gap-2 rounded-lg border-1 border-[#EFEFEF] ">
-                <img className="w-6 h-6" src={elementSvg} alt="" />
-              </button>
-            </div>
-          </div>
 
-          {/* options */}
-          <div className="border-b-1 border-[#EAECF0]">
-            <button
-              onClick={() => {
-                setRolesClickedOption("all");
-              }}
-              className={`text-sm font-medium  cursor-pointer p-4 ${
-                rolesClickedOption === "all"
-                  ? "text-[#6a1039] border-b-1 border-[#6a1039]"
-                  : "text-[#667085]"
-              } `}
-            >
-              All
-            </button>
-            <button
-              onClick={() => {
-                setRolesClickedOption("product");
-              }}
-              className={`text-sm font-medium  cursor-pointer p-4 ${
-                rolesClickedOption === "product"
-                  ? "text-[#6a1039] border-b-1 border-[#6a1039]"
-                  : "text-[#667085]"
-              } `}
-            >
-              Product
-            </button>
-            <button
-              onClick={() => {
-                setRolesClickedOption("engineering");
-              }}
-              className={`text-sm font-medium cursor-pointer p-4 ${
-                rolesClickedOption === "engineering"
-                  ? "text-[#6a1039] border-b-1 border-[#6a1039]"
-                  : "text-[#667085]"
-              } `}
-            >
-              Engineering
-            </button>
-            <button
-              onClick={() => {
-                setRolesClickedOption("marketing");
-              }}
-              className={`text-sm font-medium cursor-pointer p-4 ${
-                rolesClickedOption === "marketing"
-                  ? "text-[#6a1039] border-b-1 border-[#6a1039]"
-                  : "text-[#667085]"
-              } `}
-            >
-              Marketing
-            </button>
-            <button
-              onClick={() => {
-                setRolesClickedOption("recruitment");
-              }}
-              className={`text-sm font-medium  cursor-pointer p-4 ${
-                rolesClickedOption === "recruitment"
-                  ? "text-[#6a1039] border-b-1 border-[#6a1039]"
-                  : "text-[#667085]"
-              } `}
-            >
-              Recruitment
-            </button>
-            <button
-              onClick={() => {
-                setRolesClickedOption("sales");
-              }}
-              className={`text-sm font-medium  cursor-pointer p-4 ${
-                rolesClickedOption === "sales"
-                  ? "text-[#6a1039] border-b-1 border-[#6a1039]"
-                  : "text-[#667085]"
-              } `}
-            >
-              Sales
-            </button>
-            <button
-              onClick={() => {
-                setRolesClickedOption("cs");
-              }}
-              className={`text-sm font-medium  cursor-pointer p-4 ${
-                rolesClickedOption === "cs"
-                  ? "text-[#6a1039] border-b-1 border-[#6a1039]"
-                  : "text-[#667085]"
-              } `}
-            >
-              Customer Service
-            </button>
-          </div>
+          {/* all roles */}
+          {clickedOption === "all" && (
+            <div>
+              {/* search roles */}
+              <div className="flex justify-between px-4 border-1 border-[#EFF1F4] rounded-[0.43rem] my-[0.69rem] ">
+                <div className="relative p-4 w-[30.1875rem]">
+                  <img
+                    className="absolute w-4 h-4 top-1/2 -translate-1/2"
+                    src={searchSvg}
+                    alt=""
+                  />
+                  <input
+                    className="text-sm ml-6 focus:outline-none w-full"
+                    type="text"
+                    placeholder="Search Roles by Title, Teams or any related keywords"
+                  />
+                </div>
+                <div className="flex gap-2 items-center">
+                  <button className="py-[0.62rem] px-4 flex gap-2 rounded-lg border-1 border-[#EFEFEF] ">
+                    <img className="w-5 h-5" src={filterSvg} alt="" />
+                    <p className="text-sm text-[#344054]">Filter</p>
+                  </button>
+                  <button className="py-[0.62rem] px-4 flex gap-2 rounded-lg bg-[#EFEFEF] ">
+                    <img className="w-6 h-6" src={listUnordered} alt="" />
+                  </button>
+                  <button className="py-[0.62rem] px-4 flex gap-2 rounded-lg border-1 border-[#EFEFEF] ">
+                    <img className="w-6 h-6" src={elementSvg} alt="" />
+                  </button>
+                </div>
+              </div>
 
-          {/* what to show when the votton is clicked */}
-          <div className="my-[1.44rem]">
-            <All />
-          </div>
+              {/* options */}
+              <div className="border-b-1 border-[#EAECF0]">
+                <button
+                  onClick={() => {
+                    setRolesClickedOption("all");
+                  }}
+                  className={`text-sm font-medium  cursor-pointer p-4 ${
+                    rolesClickedOption === "all"
+                      ? "text-[#6a1039] border-b-1 border-[#6a1039]"
+                      : "text-[#667085]"
+                  } `}
+                >
+                  All
+                </button>
+                <button
+                  onClick={() => {
+                    setRolesClickedOption("product");
+                  }}
+                  className={`text-sm font-medium  cursor-pointer p-4 ${
+                    rolesClickedOption === "product"
+                      ? "text-[#6a1039] border-b-1 border-[#6a1039]"
+                      : "text-[#667085]"
+                  } `}
+                >
+                  Product
+                </button>
+                <button
+                  onClick={() => {
+                    setRolesClickedOption("engineering");
+                  }}
+                  className={`text-sm font-medium cursor-pointer p-4 ${
+                    rolesClickedOption === "engineering"
+                      ? "text-[#6a1039] border-b-1 border-[#6a1039]"
+                      : "text-[#667085]"
+                  } `}
+                >
+                  Engineering
+                </button>
+                <button
+                  onClick={() => {
+                    setRolesClickedOption("marketing");
+                  }}
+                  className={`text-sm font-medium cursor-pointer p-4 ${
+                    rolesClickedOption === "marketing"
+                      ? "text-[#6a1039] border-b-1 border-[#6a1039]"
+                      : "text-[#667085]"
+                  } `}
+                >
+                  Marketing
+                </button>
+                <button
+                  onClick={() => {
+                    setRolesClickedOption("recruitment");
+                  }}
+                  className={`text-sm font-medium  cursor-pointer p-4 ${
+                    rolesClickedOption === "recruitment"
+                      ? "text-[#6a1039] border-b-1 border-[#6a1039]"
+                      : "text-[#667085]"
+                  } `}
+                >
+                  Recruitment
+                </button>
+                <button
+                  onClick={() => {
+                    setRolesClickedOption("sales");
+                  }}
+                  className={`text-sm font-medium  cursor-pointer p-4 ${
+                    rolesClickedOption === "sales"
+                      ? "text-[#6a1039] border-b-1 border-[#6a1039]"
+                      : "text-[#667085]"
+                  } `}
+                >
+                  Sales
+                </button>
+                <button
+                  onClick={() => {
+                    setRolesClickedOption("cs");
+                  }}
+                  className={`text-sm font-medium  cursor-pointer p-4 ${
+                    rolesClickedOption === "cs"
+                      ? "text-[#6a1039] border-b-1 border-[#6a1039]"
+                      : "text-[#667085]"
+                  } `}
+                >
+                  Customer Service
+                </button>
+              </div>
+
+              {/* what to show when the votton is clicked */}
+              <div className="my-[1.44rem]">
+                <All />
+              </div>
+            </div>
+          )}
+
+          {/* if you clicked on permissions */}
+          {clickedOption === "permissions" && (<Permissions/>)}
         </div>
       </main>
     </div>

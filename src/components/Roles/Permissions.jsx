@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import helpSvg from "../../assets/help-circle.svg";
 import AllEmployees from "./Permissions Folder/AllEmployees";
+import Custom from "./Permissions Folder/Custom";
 
 const Permissions = () => {
   const [clickedOption, setClickedOption] = useState("employees");
@@ -34,7 +35,9 @@ const Permissions = () => {
             Set permissions
           </p>
           <p className="text-sm text-[#676e7e]">
-            Modify access and permission for teams and individuals{" "}
+            {clickedOption === "custom"
+              ? "Modify what Individuals on this role can do"
+              : "Modify access and permission for teams and individuals"}{" "}
           </p>
         </div>
 
@@ -91,17 +94,31 @@ const Permissions = () => {
             onClick={() => {
               setClickedOption("custom");
             }}
-            className={`cursor-pointer text-sm font-medium pb-4 ${
+            className={`cursor-pointer text-sm font-medium pb-4 flex flex-start ${
               clickedOption === "custom"
                 ? "text-[#6A1039] border-b-2 border-[#6A1039]"
                 : "text-[#667085]"
             }`}
           >
-            Custom
+            <p>Custom</p>
+            <div className="relative group">
+              <img
+                className="w-4 h-4 rounded-full  "
+                src={helpSvg}
+                alt=""
+              />
+              <p className="hidden group-hover:block py-[0.68rem]  text-xs text-left font-medium text-[#676e7e] rounded-[1.25rem] bg-[#eff1f4] w-[10.875rem]  absolute">
+                If you need to set permission for a specific team, role or
+                Individual, click here to search and add them
+              </p>
+            </div>
           </button>
         </div>
       </div>
-        <div>{clickedOption === "employees" && <AllEmployees />}</div>
+      <div>
+        {clickedOption === "employees" && <AllEmployees />}
+        {clickedOption === "custom" && <Custom />}
+      </div>
     </div>
   );
 };

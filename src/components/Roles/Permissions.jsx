@@ -3,8 +3,9 @@ import helpSvg from "../../assets/help-circle.svg";
 import AllEmployees from "./Permissions Folder/AllEmployees";
 import Custom from "./Permissions Folder/Custom";
 
+
 const Permissions = () => {
-  const [clickedOption, setClickedOption] = useState("employees");
+   const [clickedOption, setClickedOption] = useState("employees");
   return (
     <div className="my-[2.44rem] py-[2.37rem] px-[1.88rem] rounded-[0.625rem] border-1 border-[#eff1f4] ">
       <div className="flex flex-col gap-3 border-b-1 border-[#eff1f4] pb-[1.56rem]">

@@ -59,7 +59,7 @@ const BasicDetails = () => {
           />
           <textarea
             className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82] row-span-3"
-            placeholder=" Description or Purpose"
+            placeholder="Description or Purpose"
           />
         </div>
         <div className="grid grid-rows-4 gap-4 text-sm">

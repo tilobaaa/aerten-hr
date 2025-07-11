@@ -12,10 +12,12 @@ import listUnordered from "../assets/list_unordered.svg";
 import elementSvg from "../assets/element.svg";
 import All from "../components/Roles/All";
 import Permissions from "../components/Roles/Permissions";
+import { useNavigate } from "react-router-dom";
 
 const Roles = () => {
   const [clickedOption, setClickedOption] = useState("all");
   const [rolesClickedOption, setRolesClickedOption] = useState("all");
+  const navigate = useNavigate();
   return (
     <div className="flex">
       <SideBar />
@@ -66,7 +68,7 @@ const Roles = () => {
                 <img className="w-4 h-4" src={downloadSvg} alt="" />
                 <p className="text-sm text-[#0E2354]">Assign</p>
               </button>
-              <button className="py-2 px-4 flex items-center gap-2 bg-[#6A1039]  rounded-lg cursor-pointer scale-105 transition-all duration-500">
+              <button onClick={()=>{navigate('/roles/new')}} className="py-2 px-4 flex items-center gap-2 bg-[#6A1039]  rounded-lg cursor-pointer scale-105 transition-all duration-500">
                 <img className="w-4 h-4" src={addSvg} alt="" />
                 <p className="text-sm text-white">New Role</p>
               </button>

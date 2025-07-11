@@ -36,14 +36,19 @@ const Custom = () => {
     setSelectedEmployees(remainingItems);
   };
 
+  const addFromConfirmation = () => {
+    setIsConfirmed(false);
+    setSearchVisible(true);
+  };
+
   return (
     <div>
-        {!isConfirmed && (
-      <div
-        className={`h-80 w-full flex flex-col gap-5 ${
-          selectedEmployees.length === 0 && "items-center justify-center"
-        }`}
-      >
+      {!isConfirmed && (
+        <div
+          className={`h-80 w-full flex flex-col gap-5 ${
+            selectedEmployees.length === 0 && "items-center justify-center"
+          }`}
+        >
           <div className="w-full">
             {selectedEmployees.length === 0 ? (
               <div className="w-full flex flex-col gap-5 items-center justify-center">
@@ -85,7 +90,12 @@ const Custom = () => {
                     ))}
                   </div>
                 </div>
-                <button onClick={()=>{setIsConfirmed(true)}} className="py-[0.62rem] px-4 flex gap-2 items-center border rounded-[1.8125rem] border-[#e6e7ec] cursor-pointer">
+                <button
+                  onClick={() => {
+                    setIsConfirmed(true);
+                  }}
+                  className="py-[0.62rem] px-4 flex gap-2 items-center border rounded-[1.8125rem] border-[#e6e7ec] cursor-pointer"
+                >
                   <img
                     className="w-4 h-4 rounded-[0.75rem] border border-dotted border-[#e6e7ec]  "
                     src={plusSvg}
@@ -140,14 +150,20 @@ const Custom = () => {
               )}
             </div>
           </div>
-      </div>
-        )}
+        </div>
+      )}
 
       {isConfirmed === false && selectedEmployees.length > 0 && (
         <EmployeeAceess />
       )}
 
-      {isConfirmed && <TabularCustomPermissions selectedEmployees={selectedEmployees} />}
+      {isConfirmed && (
+        <TabularCustomPermissions
+          selectedEmployees={selectedEmployees}
+          onRemove={removeItem}
+          addItem={addFromConfirmation}
+        />
+      )}
     </div>
   );
 };

@@ -3,16 +3,16 @@ import plusSvg from "../../../assets/plus.svg";
 import employeePic from "../../../assets/employee-avatar.png";
 import ToggleButton from "../../utilities/ToggleButton";
 
-const TabularCustomPermissions = ({ selectedEmployees }) => {
+const TabularCustomPermissions = ({ selectedEmployees, onRemove, addItem }) => {
   return (
     <div className="-mx-8">
       <div className="flex justify-between items-center mx-8">
         <p className="text-sm font-medium text-[#47586e] ">
           Set Permissions for these selected individuals.
         </p>
-        <button className="px-4 py-[0.62rem] flex gap-2 border border-[#e6e7ec] rounded-[1.8125rem] ">
+        <button onClick={addItem} className="px-4 py-[0.62rem] flex gap-2 border border-[#e6e7ec] rounded-[1.8125rem] cursor-pointer ">
           <img className="w-4 h-4" src={plusSvg} alt="" />
-          <p className="text-sm text-[#0e2354]">Add</p>
+          <p className="text-sm text-[#0e2354]">Add More</p>
         </button>
       </div>
 
@@ -55,7 +55,7 @@ const TabularCustomPermissions = ({ selectedEmployees }) => {
           {selectedEmployees.map((emp) => (
             <tr key={emp.id} >
               <td className="flex items-center gap-3 px-6 py-4 border-b border-[#eaecf0]">
-                <div className="cursor-pointer text-xs border p-1 w-5 h-5 border-[#d0d5dd]  rounded-md flex items-center justify-center">
+                <div onClick={()=> onRemove(emp.id)} className="cursor-pointer text-xs border p-1 w-5 h-5 border-[#d0d5dd]  rounded-md flex items-center justify-center">
                   {" "}
                   <p>x</p>
                 </div>

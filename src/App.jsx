@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import Roles from './pages/Roles'
 import EmployeeProfile from "./pages/EmployeeProfile";
 import RolesDetails from "./pages/RolesDetails";
+import CreateNewRoles from "./components/Roles/CreateNewRoles";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
 
       <Route path="/roles" element={<Roles />} />
       <Route path="/roles/:id" element={<RolesDetails/>}/>
+      <Route path="/roles/new" element={<CreateNewRoles/>}/>
     </Routes>
   );
 }

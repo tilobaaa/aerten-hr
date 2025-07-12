@@ -1,11 +1,11 @@
 import React from "react";
 import ToggleButton from "../../utilities/ToggleButton";
 
-const EmployeeAceess = () => {
+const EmployeeAceess = ({title}) => {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <p className="text-sm text-[#8993a4] font-semibold">Employee Access</p>
+        <p className="text-sm text-[#8993a4] font-semibold">{title || `Employee Access`}</p>
         <div className="flex items-center gap-[0.12rem]">
           <ToggleButton />
           <p className="text-sm text-black font-medium">Enable all</p>

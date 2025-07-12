@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SideBar from "../SideBar";
 import searchSvg from "../../assets/search.svg";
 import settingsSvg from "../../assets/settings.svg";
@@ -6,10 +6,21 @@ import profileSvg from "../../assets/profile-pic.svg";
 import bellSvg from "../../assets/bell.svg";
 import leftArrow from "../../assets/arrow-left.svg";
 import checkSvg from "../../assets/checked.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BasicDetails from "./BasicDetails";
+import SetPermissions from "./SetPermissions";
 
 const CreateNewRoles = () => {
+  const [step, setStep] = useState(1);
+  const navigate = useNavigate();
+
+ 
+
+  const moveToNextStep =()=>{
+    if(step <3){
+      setStep(prev=> prev+1)
+    }
+  }
   return (
     <div>
       <SideBar />
@@ -62,37 +73,49 @@ const CreateNewRoles = () => {
           <div className="flex justify-between items-center">
             <div className="flex gap-[2.62rem] items-center">
               <div className="flex gap-3 items-center">
-                <img
+                {step === 1 ?  <img
                   className="w-[1.625rem] h-[1.625rem] "
                   src={checkSvg}
                   alt=""
-                />
-                <p className="text-[#6a1039] text-xs font-semibold">
+                /> : <div className="w-[1.625rem] h-[1.625rem] rounded-full border border-[#cdd0d8] flex items-center justify-center ">
+                  {" "}
+                  <p className="text-sm text-[#9AA1B1]">1</p>
+                </div>}
+                <p className={`${step===1 ? 'text-[#6a1039] font-semibold' : 'text-[#505f79]'} text-xs `}>
                   Basic Info
                 </p>
               </div>
               <div className="flex gap-3 items-center">
-                <div className="w-[1.625rem] h-[1.625rem] rounded-full border border-[#cdd0d8] flex items-center justify-center ">
+               {step === 2 ?  <img
+                  className="w-[1.625rem] h-[1.625rem] "
+                  src={checkSvg}
+                  alt=""
+                /> : <div className="w-[1.625rem] h-[1.625rem] rounded-full border border-[#cdd0d8] flex items-center justify-center ">
                   {" "}
                   <p className="text-sm text-[#9AA1B1]">2</p>
-                </div>
-                <p className="text-[#505f79] text-xs">Set Permissions</p>
+                </div>}
+                <p className={`${step===2 ? 'text-[#6a1039] font-semibold' : 'text-[#505f79]'} text-xs `}>Set Permissions</p>
               </div>
               <div className="flex gap-3 items-center">
-                <div className="w-[1.625rem] h-[1.625rem] rounded-full border border-[#cdd0d8] flex items-center justify-center ">
+               {step === 3 ?  <img
+                  className="w-[1.625rem] h-[1.625rem] "
+                  src={checkSvg}
+                  alt=""
+                /> : <div className="w-[1.625rem] h-[1.625rem] rounded-full border border-[#cdd0d8] flex items-center justify-center ">
                   {" "}
                   <p className="text-sm text-[#9AA1B1]">3</p>
-                </div>
-                <p className="text-[#505f79] text-xs">Review Details</p>
+                </div>}
+                <p className={`${step===3 ? 'text-[#6a1039] font-semibold' : 'text-[#505f79]'} text-xs `}>Review Details</p>
               </div>
             </div>
 
             <div className="flex items-center gap-[1.38rem] my-8">
-                <button className="px-4 py-[0.625rem] border border-[#e6e7ec] text-sm text-[#0e2354] cursor-pointer rounded-md">Cancel</button>
-                 <button className="px-4 py-[0.625rem]  text-sm  rounded-lg bg-[#6a1039] text-white cursor-pointer ">Continue</button>
+                <button onClick={()=>navigate('/roles')} className="px-4 py-[0.625rem] border border-[#e6e7ec] text-sm text-[#0e2354] cursor-pointer rounded-md">Cancel</button>
+                 <button onClick={ moveToNextStep}  className="px-4 py-[0.625rem]  text-sm  rounded-lg bg-[#6a1039] text-white cursor-pointer ">{step===3 ? "Create Role" : "Continue"}</button>
             </div>
           </div>
-            <BasicDetails/>
+            {step === 1 && <BasicDetails />}
+            {step === 2 && <SetPermissions/>}
         </div>
       </main>
     </div>

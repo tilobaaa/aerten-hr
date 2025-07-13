@@ -9,6 +9,15 @@ const BasicDetails = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedEmployees, setSelectedEmployees] = useState([]);
 
+  const [formData, setFormData] = useState({
+  name:'',
+  desc:'',
+  salary:'', 
+  benefits:'',
+  teams:[],
+  accessLevel: ''
+ })
+
   const filteredResults = employees.filter((emp) => {
     const query = searchQuery.toLowerCase();
     return (
@@ -42,7 +51,7 @@ const BasicDetails = () => {
             Add basic information about this role you’re creating
           </p>
         </div>
-        <button className="border border-[#e6e7ec] rounded-[1.8125rem] flex items-center gap-2 py-[0.625rem] px-4 ">
+        <button className="cursor-pointer border border-[#e6e7ec] rounded-[1.8125rem] flex items-center gap-2 py-[0.625rem] px-4 ">
           <img className="w-4 h-4" src={plusSvg} alt="" />
           <p className="text-[#0e2354] text-sm ">Reporting Manager</p>
           <img className="w-4 h-4" src={helpCirtcle} alt="" />
@@ -81,15 +90,8 @@ const BasicDetails = () => {
               Role type
             </option>
           </select>
-          <select
-            className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82]"
-            name="Access Level"
-            id=""
-          >
-            <option className="text-[#5d6b82]" value="Public">
-              Salary and benefits
-            </option>
-          </select>
+         
+          <input className="py-[0.62rem] px-[0.875rem] border border-[#eff1f4] rounded-md" type='number' placeholder="Salary and benefits" />
         </div>
       </form>
 

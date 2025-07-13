@@ -5,18 +5,19 @@ import searchSvg from "../../assets/search.svg";
 import employeePng from "../../assets/employee-avatar.png";
 import { employees } from "../../assets/requestArray";
 
-const BasicDetails = () => {
+const BasicDetails = ({formData, setFormData, selectedEmployees, setSelectedEmployees}) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedEmployees, setSelectedEmployees] = useState([]);
+  
 
-  const [formData, setFormData] = useState({
-  name:'',
-  desc:'',
-  salary:'', 
-  benefits:'',
-  teams:[],
-  accessLevel: ''
- })
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const filteredResults = employees.filter((emp) => {
     const query = searchQuery.toLowerCase();
@@ -65,8 +66,14 @@ const BasicDetails = () => {
             className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82]"
             type="text"
             placeholder="Title/name"
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
           />
           <textarea
+            name="desc"
+            value={formData.desc}
+            onChange={handleChange}
             className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82] row-span-3"
             placeholder="Description or Purpose"
           />
@@ -74,24 +81,68 @@ const BasicDetails = () => {
         <div className="grid grid-rows-4 gap-4 text-sm">
           <select
             className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82]"
-            name="Access Level"
-            id=""
+            name="accessLevel"
+            value={FormData.accessLevel}
+            onChange={handleChange}
           >
-            <option className="text-[#5d6b82]" value="Public">
+            <option className="text-[#5d6b82]" value="">
               Access Level
+            </option>
+            <option className="text-[#5d6b82]" value="Manager Access">
+              Manager Access
+            </option>
+            <option className="text-[#5d6b82]" value="Employee Access">
+              Employee Access
+            </option>
+            <option className="text-[#5d6b82]" value="No Access">
+              No Access
             </option>
           </select>
           <select
             className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82]"
-            name="Access Level"
+            name="jobType"
             id=""
+            value={formData.jobType}
+            onChange={handleChange}
           >
-            <option className="text-[#5d6b82]" value="Public">
+            <option className="text-[#5d6b82]" value="">
               Role type
             </option>
+            <option className="text-[#5d6b82]" value="Full-time">
+              Full-time
+            </option>
+            <option className="text-[#5d6b82]" value="Part-time">
+              Part-time
+            </option>
+            <option className="text-[#5d6b82]" value="Remote">
+              Remote
+            </option>
+            <option className="text-[#5d6b82]" value="Hybrid">
+              Hybrid
+            </option>
+            <option className="text-[#5d6b82]" value="Contract">
+              Contract
+            </option>
           </select>
-         
-          <input className="py-[0.62rem] px-[0.875rem] border border-[#eff1f4] rounded-md" type='number' placeholder="Salary and benefits" />
+
+          <input
+            className="py-[0.62rem] px-[0.875rem] border border-[#eff1f4] rounded-md"
+            type="number"
+            placeholder="Salary and benefits"
+            name='salary'
+            value={formData.salary}
+            onChange={handleChange}
+          />
+
+
+           <input
+            className="py-[0.62rem] px-[0.875rem] border border-[#eff1f4] rounded-md"
+            type="text"
+            placeholder="Benefits"
+            name='benefit'
+            value={formData.benefit}
+            onChange={handleChange}
+          />
         </div>
       </form>
 
@@ -131,21 +182,25 @@ const BasicDetails = () => {
               )}
             </ul>
           )}
-
         </div>
-          {/* selected employees */}
-          <div className="flex flex-wrap gap-2 w-[45rem] ">
-            {selectedEmployees.map((emp) => (
-              <div
-                className="flex gap-1 items-center bg-[#f5f6f7] py-[0.125rem] px-2 my-2 rounded-[12.5rem]"
-                key={emp.id}
+        {/* selected employees */}
+        <div className="flex flex-wrap gap-2 w-[45rem] ">
+          {selectedEmployees.map((emp) => (
+            <div
+              className="flex gap-1 items-center bg-[#f5f6f7] py-[0.125rem] px-2 my-2 rounded-[12.5rem]"
+              key={emp.id}
+            >
+              <img className="w-5 h-5" src={employeePng} alt="" />
+              <p className="text-sm font-medium text-[#091e42] ">{emp.name}</p>
+              <p
+                onClick={() => removeItem(emp.id)}
+                className="cursor-pointer text-sm"
               >
-                <img className="w-5 h-5" src={employeePng} alt="" />
-                <p className="text-sm font-medium text-[#091e42] ">{emp.name}</p>
-                <p  onClick={()=>removeItem(emp.id)} className="cursor-pointer text-sm">x</p>
-              </div>
-            ))}
-          </div>
+                x
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

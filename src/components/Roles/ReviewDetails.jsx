@@ -1,16 +1,21 @@
 import React from "react";
 import employeeAvatar from "../../assets/employee-avatar.png";
 import Permission from "../Role Details/Permission";
+import { useEmployees } from "../../EmployeesContext";
+import briefcaseSvg from '../../assets/briefcase.svg'
 
+const ReviewDetails = ({ formData, isConfirmed, setIsConfirmed }) => {
+  const { selectedEmployees } = useEmployees();
 
-const ReviewDetails = ({ formData }) => {
   const generateRandomRoleId = () => {
     const randomNum = Math.floor(100 + Math.random() * 900); // 100–999
-    return `EMP${randomNum}`;
+    return `#EMP${randomNum}`;
   };
 
+  console.log(formData.teams);
+
   return (
-    <div className="p-8 border border-[#eff1f4] rounded-[0.625rem]">
+    <div className="p-8 border border-[#eff1f4] rounded-[0.625rem] relative">
       <div className="flex justify-between items-center border-b border-[#eff1f4] pb-8">
         <div className="flex flex-col gap-3">
           <h6 className="text-[#0e2354] text-lg font-semibold ">
@@ -75,7 +80,7 @@ const ReviewDetails = ({ formData }) => {
           <div>
             <p className="text-sm font-medium text-[#47586e] py-4">Teams:</p>
             <div className="flex gap-3 text-xs font-medium">
-              {formData.teams.map((team, index) => (
+              {selectedEmployees.map((team, index) => (
                 <p
                   key={index}
                   className={`py-[0.125rem] px-2 rounded-2xl ${
@@ -84,28 +89,40 @@ const ReviewDetails = ({ formData }) => {
                       : "text-[#091e42] bg-[#f5f6f7]"
                   }`}
                 >
-                  {team}
+                  {team.name}
                 </p>
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-6 border-b-1 border-[#eaecf0]">
+          <div className="flex flex-col gap-6 border-b-1 border-[#eaecf0] my-12">
             <div className="flex gap-3 items-center pb-[0.87rem]  ">
-              <img className="w-8 h-8 rounded-full " src={employeeAvatar} alt="" />
+              <img
+                className="w-8 h-8 rounded-full "
+                src={employeeAvatar}
+                alt=""
+              />
               <div className="flex flex-col text-sm">
                 <p className="text-[#344054] font-black">Tassy Omah</p>
                 <p className="text-[#667085]">Developer Relations, Payments</p>
               </div>
             </div>
             <div className="flex gap-3 items-center pb-[0.87rem]  ">
-              <img className="w-8 h-8 rounded-full " src={employeeAvatar} alt="" />
+              <img
+                className="w-8 h-8 rounded-full "
+                src={employeeAvatar}
+                alt=""
+              />
               <div className="flex flex-col text-sm">
                 <p className="text-[#344054] font-black">Tassy Omah</p>
                 <p className="text-[#667085]">Developer Relations, Payments</p>
               </div>
             </div>
             <div className="flex gap-3 items-center pb-[0.87rem]  ">
-              <img className="w-8 h-8 rounded-full " src={employeeAvatar} alt="" />
+              <img
+                className="w-8 h-8 rounded-full "
+                src={employeeAvatar}
+                alt=""
+              />
               <div className="flex flex-col text-sm">
                 <p className="text-[#344054] font-black">Tassy Omah</p>
                 <p className="text-[#667085]">Developer Relations, Payments</p>
@@ -117,6 +134,24 @@ const ReviewDetails = ({ formData }) => {
         {/* second grid */}
         <Permission />
       </div>
+      {isConfirmed && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center">
+          <div
+            onClick={() => {
+              setIsConfirmed(false);
+            }}
+            className="fixed -z-20 top-0 left-0 w-screen h-screen bg-[#344054ab]  "
+          ></div>
+          <div className="z-50 bg-white rounded-xl w-[32.875rem] h-[28.937rem] p-10 pb-[3.875rem] flex flex-col gap-[1.88rem]">
+              <div className="w-fit pt-[0.625rem] px-3 pb-[0.875rem] bg-[#ffe6ef] rounded-[1.75rem]">
+                <img className="w-6 h-6 " src={briefcaseSvg} alt="" />
+              </div>
+              <div>
+                <h5>Assign a role</h5>
+              </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

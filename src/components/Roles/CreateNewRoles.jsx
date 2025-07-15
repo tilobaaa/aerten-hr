@@ -11,9 +11,12 @@ import BasicDetails from "./BasicDetails";
 import SetPermissions from "./SetPermissions";
 import ReviewDetails from "./ReviewDetails";
 
+import { useEmployees } from "../../EmployeesContext";
+
 const CreateNewRoles = () => {
   const [step, setStep] = useState(1);
-   const [selectedEmployees, setSelectedEmployees] = useState([]);
+  const [isConfirmed, setIsConfirmed] = useState(true);
+ const { selectedEmployees, setSelectedEmployees } = useEmployees();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     role: "",
@@ -29,6 +32,8 @@ const CreateNewRoles = () => {
   const moveToNextStep = () => {
     if (step < 3) {
       setStep((prev) => prev + 1);
+    }else if(step === 3){
+      setIsConfirmed(true);
     }
   };
 
@@ -171,7 +176,7 @@ const CreateNewRoles = () => {
           </div>
           {step === 1 && <BasicDetails formData={formData} setFormData={setFormData} selectedEmployees={selectedEmployees} setSelectedEmployees={setSelectedEmployees}/>}
           {step === 2 && <SetPermissions />}
-          {step === 3 && <ReviewDetails formData={formData}/>}
+          {step === 3 && <ReviewDetails formData={formData} isConfirmed={isConfirmed} setIsConfirmed={setIsConfirmed} />}
         </div>
       </main>
     </div>

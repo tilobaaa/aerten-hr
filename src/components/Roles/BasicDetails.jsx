@@ -128,7 +128,7 @@ const BasicDetails = ({formData, setFormData, selectedEmployees, setSelectedEmpl
           <input
             className="py-[0.62rem] px-[0.875rem] border border-[#eff1f4] rounded-md"
             type="number"
-            placeholder="Salary and benefits"
+            placeholder="Salary"
             name='salary'
             value={formData.salary}
             onChange={handleChange}

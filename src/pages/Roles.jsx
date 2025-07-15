@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SideBar from "../components/SideBar";
+import plusSvg from '../assets/plus.svg';
 import bellSvg from "../assets/bell.svg";
 import searchSvg from "../assets/search.svg";
 import settingsSvg from "../assets/settings.svg";
@@ -9,14 +10,19 @@ import downloadSvg from "../assets/download.svg";
 import addSvg from "../assets/add.svg";
 import filterSvg from "../assets/filters-lines.svg";
 import listUnordered from "../assets/list_unordered.svg";
+import briefcaseSvg from "../assets/briefcase.svg";
 import elementSvg from "../assets/element.svg";
+import employeePng from "../assets/employee-avatar.png";
 import All from "../components/Roles/All";
 import Permissions from "../components/Roles/Permissions";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Roles = () => {
   const [clickedOption, setClickedOption] = useState("all");
   const [rolesClickedOption, setRolesClickedOption] = useState("all");
+
+  const [isConfirmed, setIsConfirmed] = useState(false);
+
   const navigate = useNavigate();
   return (
     <div className="flex">
@@ -64,11 +70,21 @@ const Roles = () => {
               </p>
             </div>
             <div className="flex gap-2">
-              <button className="py-2 px-4 flex items-center gap-2 border-1 border-[#E6E7EC] rounded-lg cursor-pointer scale-105 transition-all duration-500">
+              <button
+                onClick={() => {
+                  setIsConfirmed(true);
+                }}
+                className="py-2 px-4 flex items-center gap-2 border-1 border-[#E6E7EC] rounded-lg cursor-pointer scale-105 transition-all duration-500"
+              >
                 <img className="w-4 h-4" src={downloadSvg} alt="" />
                 <p className="text-sm text-[#0E2354]">Assign</p>
               </button>
-              <button onClick={()=>{navigate('/roles/new')}} className="py-2 px-4 flex items-center gap-2 bg-[#6A1039]  rounded-lg cursor-pointer scale-105 transition-all duration-500">
+              <button
+                onClick={() => {
+                  navigate("/roles/new");
+                }}
+                className="py-2 px-4 flex items-center gap-2 bg-[#6A1039]  rounded-lg cursor-pointer scale-105 transition-all duration-500"
+              >
                 <img className="w-4 h-4" src={addSvg} alt="" />
                 <p className="text-sm text-white">New Role</p>
               </button>
@@ -229,9 +245,81 @@ const Roles = () => {
           )}
 
           {/* if you clicked on permissions */}
-          {clickedOption === "permissions" && (<Permissions/>)}
+          {clickedOption === "permissions" && <Permissions />}
         </div>
       </main>
+
+      {isConfirmed && (
+        <div className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center">
+          <div
+            onClick={() => {
+              setIsConfirmed(false);
+            }}
+            className="fixed -z-20 top-0 left-0 w-screen h-screen bg-[#344054ab]  "
+          ></div>
+          <div className="z-50 bg-white rounded-xl w-[32.875rem] h-[28.937rem] p-10 pb-[3.875rem] flex flex-col gap-[1.88rem] ">
+            <div className="w-fit pt-[0.625rem] px-3 pb-[0.875rem] bg-[#ffe6ef] rounded-[1.75rem]">
+              <img className="w-6 h-6 " src={briefcaseSvg} alt="" />
+            </div>
+            <div>
+              <h5>Assign a role</h5>
+              <div className="flex items-center gap-2">
+                <p className="text-sm text-[#667085]">
+                  Select a role to assign to:
+                </p>
+                <div>
+                  <input
+                    className="text-sm focus:outline-none"
+                    type="text"
+                    placeholder="Type Employee name"
+                  />
+                  <div className="flex items-center gap-1 rounded-2xl bg-[#f5f6f7] py-[0.125rem] px-2 w-fit ">
+                    {" "}
+                    <img
+                      className="w-[1.125rem] h-[1.125rem] rounded-[12.5rem]"
+                      src={employeePng}
+                      alt=""
+                    />
+                    <p className="text-[#091e42] text-sm font-medium">Name</p>
+                    <p
+                      onClick={""}
+                      className="text-xs text-[#091e42] cursor-pointer"
+                    >
+                      x
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="relative">
+                <img
+                  className="absolute w-5 h-5 -translate-y-1/2 top-1/2"
+                  src={searchSvg}
+                  alt=""
+                />
+                <input
+                  className="text-[#5d6b82] text-sm pl-6 focus:outline-none"
+                  type="text"
+                  placeholder="Search for existing roles"
+                />
+                <img
+                  className="absolute w-5 h-5 -translate-y-1/2 top-1/2 right-2"
+                  src={helpCircleSvg}
+                  alt=""
+                />
+              </div>
+              <Link to={'/roles/new'} className="px-4 py-[0.62rem] flex items-center gap-2 border border-[#e6e7ec] rounded-[1.8125rem] cursor-pointer w-fit">
+                <img className="w-4 h-4" src={plusSvg} alt="" />
+                <p className="text-[#0e2354] text-sm">Create new role</p>
+                <img className="w-4 h-4" src={helpCircleSvg} alt="" />
+              </Link>
+            </div>
+
+           <button className="rounded-lg border border-[#6a1039] bg-[#6a1039] w-full shadow-sm py-[0.625rem] text-sm font-semibold text-white cursor-pointer">Assign</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

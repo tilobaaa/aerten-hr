@@ -15,8 +15,7 @@ import { useEmployees } from "../../EmployeesContext";
 
 const CreateNewRoles = () => {
   const [step, setStep] = useState(1);
-  const [isConfirmed, setIsConfirmed] = useState(true);
- const { selectedEmployees, setSelectedEmployees } = useEmployees();
+  const { selectedEmployees, setSelectedEmployees } = useEmployees();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     role: "",
@@ -27,13 +26,12 @@ const CreateNewRoles = () => {
     teams: selectedEmployees,
     accessLevel: "",
   });
- 
 
   const moveToNextStep = () => {
     if (step < 3) {
       setStep((prev) => prev + 1);
-    }else if(step === 3){
-      setIsConfirmed(true);
+    } else if (step === 3) {
+      navigate("/roles");
     }
   };
 
@@ -174,9 +172,16 @@ const CreateNewRoles = () => {
               </button>
             </div>
           </div>
-          {step === 1 && <BasicDetails formData={formData} setFormData={setFormData} selectedEmployees={selectedEmployees} setSelectedEmployees={setSelectedEmployees}/>}
+          {step === 1 && (
+            <BasicDetails
+              formData={formData}
+              setFormData={setFormData}
+              selectedEmployees={selectedEmployees}
+              setSelectedEmployees={setSelectedEmployees}
+            />
+          )}
           {step === 2 && <SetPermissions />}
-          {step === 3 && <ReviewDetails formData={formData} isConfirmed={isConfirmed} setIsConfirmed={setIsConfirmed} />}
+          {step === 3 && <ReviewDetails formData={formData} />}
         </div>
       </main>
     </div>

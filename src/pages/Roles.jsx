@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SideBar from "../components/SideBar";
-import plusSvg from '../assets/plus.svg';
+import plusSvg from "../assets/plus.svg";
 import bellSvg from "../assets/bell.svg";
 import searchSvg from "../assets/search.svg";
 import settingsSvg from "../assets/settings.svg";
@@ -15,6 +15,7 @@ import elementSvg from "../assets/element.svg";
 import employeePng from "../assets/employee-avatar.png";
 import All from "../components/Roles/All";
 import Permissions from "../components/Roles/Permissions";
+import { employees } from "../assets/requestArray";
 import { Link, useNavigate } from "react-router-dom";
 
 const Roles = () => {
@@ -23,7 +24,48 @@ const Roles = () => {
 
   const [isConfirmed, setIsConfirmed] = useState(false);
 
+  // const allTeams = [...new Set(employees.flatMap((emp) => emp.teams))];
+  const allEmployees = employees.map((emp) => emp.name);
+  const allRoles = [...new Set(employees.map((emp) => emp.role))];
+
   const navigate = useNavigate();
+
+  const [selectedEmployee, setSelectedEmployee] = useState("");
+  const [searchEmployeeQuery, setSearchEmployeeQuery] = useState("");
+
+  const filteredEmployeeResults = allEmployees.filter((emp) => {
+    const query = searchEmployeeQuery.toLowerCase();
+    return emp.toLowerCase().includes(query);
+  });
+
+  const handleSelect = (emp) => {
+    setSelectedEmployee(emp);
+    setSearchEmployeeQuery("");
+  };
+  const onRemove = () => {
+    setSelectedEmployee("");
+  };
+
+  // for searching roles
+  const [roleSelected, setRoleSelected] = useState([]);
+  const [searchRoleQuery, setSearchRoleQuery] = useState("");
+
+  const filteredRolesSelected = allRoles.filter((role) => {
+    const query = searchRoleQuery.toLowerCase();
+    return role.toLowerCase().includes(query);
+  });
+
+  const handleRolesSelected = (emp) => {
+    if (!roleSelected.find((role) => role === emp)) {
+      setRoleSelected([...roleSelected, emp]);
+    }
+    setSearchRoleQuery("");
+  };
+
+  const onRemoveRole = (role)=>{
+      setRoleSelected((prev) => prev.filter((rol) => rol !== role))
+  }
+
   return (
     <div className="flex">
       <SideBar />
@@ -262,61 +304,132 @@ const Roles = () => {
               <img className="w-6 h-6 " src={briefcaseSvg} alt="" />
             </div>
             <div>
-              <h5>Assign a role</h5>
+              <h5 className="text-[#15294b] text-xl font-semibold">
+                Assign a role
+              </h5>
               <div className="flex items-center gap-2">
                 <p className="text-sm text-[#667085]">
                   Select a role to assign to:
                 </p>
                 <div>
-                  <input
-                    className="text-sm focus:outline-none"
-                    type="text"
-                    placeholder="Type Employee name"
-                  />
-                  <div className="flex items-center gap-1 rounded-2xl bg-[#f5f6f7] py-[0.125rem] px-2 w-fit ">
-                    {" "}
-                    <img
-                      className="w-[1.125rem] h-[1.125rem] rounded-[12.5rem]"
-                      src={employeePng}
-                      alt=""
-                    />
-                    <p className="text-[#091e42] text-sm font-medium">Name</p>
-                    <p
-                      onClick={""}
-                      className="text-xs text-[#091e42] cursor-pointer"
-                    >
-                      x
-                    </p>
-                  </div>
+                  {selectedEmployee ? (
+                    <div className="flex items-center gap-1 rounded-2xl bg-[#f5f6f7] py-[0.125rem] px-2 w-fit ">
+                      {" "}
+                      <img
+                        className="w-[1.125rem] h-[1.125rem] rounded-[12.5rem]"
+                        src={employeePng}
+                        alt=""
+                      />
+                      <p className="text-[#091e42] text-sm font-medium">
+                        {selectedEmployee}
+                      </p>
+                      <p
+                        onClick={onRemove}
+                        className="text-xs text-[#091e42] cursor-pointer"
+                      >
+                        x
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="relative">
+                      <input
+                        className="text-sm focus:outline-none"
+                        type="text"
+                        placeholder="Type Employee name"
+                        value={searchEmployeeQuery}
+                        onChange={(e) => setSearchEmployeeQuery(e.target.value)}
+                      />
+                      {searchEmployeeQuery && (
+                        <ul className="absolute bg-white shadow-md rounded mt-10 z-10 w-full max-h-40 overflow-y-auto">
+                          {filteredEmployeeResults.map((emp, index) => (
+                            <li
+                              key={index}
+                              onClick={() => handleSelect(emp)}
+                              className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            >
+                              <strong>{emp}</strong>
+                            </li>
+                          ))}
+                          {filteredEmployeeResults.length === 0 && (
+                            <li className="px-4 py-2 text-gray-500">
+                              No matches found
+                            </li>
+                          )}
+                        </ul>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              <div className="relative">
-                <img
-                  className="absolute w-5 h-5 -translate-y-1/2 top-1/2"
-                  src={searchSvg}
-                  alt=""
-                />
-                <input
-                  className="text-[#5d6b82] text-sm pl-6 focus:outline-none"
-                  type="text"
-                  placeholder="Search for existing roles"
-                />
-                <img
-                  className="absolute w-5 h-5 -translate-y-1/2 top-1/2 right-2"
-                  src={helpCircleSvg}
-                  alt=""
-                />
+              <div>
+                <div className="relative">
+                  <img
+                    className="absolute w-5 h-5 -translate-y-1/2 top-1/2"
+                    src={searchSvg}
+                    alt=""
+                  />
+                  <input
+                    className="text-[#5d6b82] text-sm pl-6 focus:outline-none w-full"
+                    type="text"
+                    placeholder="Search for existing roles"
+                    value={searchRoleQuery}
+                    onChange={(e) => setSearchRoleQuery(e.target.value)}
+                  />
+                  <img
+                    className="absolute w-5 h-5 -translate-y-1/2 top-1/2 right-2"
+                    src={helpCircleSvg}
+                    alt=""
+                  />
+                </div>
+
+                {searchRoleQuery && (
+                  <ul className="absolute bg-white shadow-md rounded mt-10 z-10 w-fit max-h-40 overflow-y-auto">
+                    {filteredRolesSelected.map((role, index) => (
+                      <li
+                        key={index}
+                        onClick={() => handleRolesSelected(role)}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      >
+                        <strong>{role}</strong>
+                      </li>
+                    ))}
+                    {filteredRolesSelected.length === 0 && (
+                      <li className="px-4 py-2 text-gray-500">
+                        No matches found
+                      </li>
+                    )}
+                  </ul>
+                )}
+                <div className="flex flex-wrap gap-2 py-3">
+                  {roleSelected.map((role, index) => (
+                    <div
+                      className="flex items-center gap-1 text-[#091e42] rounded-2xl py-[0.125rem] px-2 bg-[#f5f6f7]"
+                      key={index}
+                    >
+                      <p className="text-sm">{role}</p>
+                      <p onClick={()=>onRemoveRole(role)} className="text-xs cursor-pointer">
+                        x
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <Link to={'/roles/new'} className="px-4 py-[0.62rem] flex items-center gap-2 border border-[#e6e7ec] rounded-[1.8125rem] cursor-pointer w-fit">
+
+              <Link
+                to={"/roles/new"}
+                className="px-4 py-[0.62rem] flex items-center gap-2 border border-[#e6e7ec] rounded-[1.8125rem] cursor-pointer w-fit"
+              >
                 <img className="w-4 h-4" src={plusSvg} alt="" />
                 <p className="text-[#0e2354] text-sm">Create new role</p>
                 <img className="w-4 h-4" src={helpCircleSvg} alt="" />
               </Link>
             </div>
 
-           <button className="rounded-lg border border-[#6a1039] bg-[#6a1039] w-full shadow-sm py-[0.625rem] text-sm font-semibold text-white cursor-pointer">Assign</button>
+            <button className="rounded-lg border border-[#6a1039] bg-[#6a1039] w-full shadow-sm py-[0.625rem] text-sm font-semibold text-white cursor-pointer">
+              Assign
+            </button>
           </div>
         </div>
       )}

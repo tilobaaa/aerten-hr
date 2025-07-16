@@ -2,9 +2,9 @@ import React from "react";
 import employeeAvatar from "../../assets/employee-avatar.png";
 import Permission from "../Role Details/Permission";
 import { useEmployees } from "../../EmployeesContext";
-import briefcaseSvg from '../../assets/briefcase.svg'
 
-const ReviewDetails = ({ formData, isConfirmed, setIsConfirmed }) => {
+
+const ReviewDetails = ({ formData }) => {
   const { selectedEmployees } = useEmployees();
 
   const generateRandomRoleId = () => {
@@ -134,24 +134,7 @@ const ReviewDetails = ({ formData, isConfirmed, setIsConfirmed }) => {
         {/* second grid */}
         <Permission />
       </div>
-      {isConfirmed && (
-        <div className="fixed top-0 left-0 w-screen h-screen flex justify-center items-center">
-          <div
-            onClick={() => {
-              setIsConfirmed(false);
-            }}
-            className="fixed -z-20 top-0 left-0 w-screen h-screen bg-[#344054ab]  "
-          ></div>
-          <div className="z-50 bg-white rounded-xl w-[32.875rem] h-[28.937rem] p-10 pb-[3.875rem] flex flex-col gap-[1.88rem]">
-              <div className="w-fit pt-[0.625rem] px-3 pb-[0.875rem] bg-[#ffe6ef] rounded-[1.75rem]">
-                <img className="w-6 h-6 " src={briefcaseSvg} alt="" />
-              </div>
-              <div>
-                <h5>Assign a role</h5>
-              </div>
-          </div>
-        </div>
-      )}
+    
     </div>
   );
 };

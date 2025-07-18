@@ -6,6 +6,7 @@ import searchSvg from "../../assets/search.svg";
 import helpCircleSvg from "../../assets/help-circle.svg";
 import plusSvg from "../../assets/plus.svg";
 import closeSvg from "../../assets/close.svg";
+import { useNavigate } from "react-router-dom";
 
 const Assign = ({
   selectedEmployee,
@@ -21,8 +22,12 @@ const Assign = ({
   handleSelect,
   roleSelected,
   handleRolesSelected,
+  setSelectedEmployee,
+  setRoleSelected,
 }) => {
   const [setValue, setSetValue] = useState(1);
+
+  const navigate = useNavigate();
 
   const set1 = (
     <div className="z-50 bg-white rounded-xl w-[32.875rem] h-[28.937rem] p-10 pb-[3.875rem] flex flex-col gap-[1.88rem] relative">
@@ -39,60 +44,6 @@ const Assign = ({
       </div>
       <div>
         <h5 className="text-[#15294b] text-xl font-semibold">Assign a role</h5>
-        {/* <div className="flex items-center gap-2">
-            <p className="text-sm text-[#667085]">
-              Select a role to assign to:
-            </p>
-            <div>
-              {selectedEmployee ? (
-                <div className="flex items-center gap-1 rounded-2xl bg-[#f5f6f7] py-[0.125rem] px-2 w-fit ">
-                  {" "}
-                  <img
-                    className="w-[1.125rem] h-[1.125rem] rounded-[12.5rem]"
-                    src={employeePng}
-                    alt=""
-                  />
-                  <p className="text-[#091e42] text-sm font-medium">
-                    {selectedEmployee}
-                  </p>
-                  <p
-                    onClick={onRemove}
-                    className="text-xs text-[#091e42] cursor-pointer"
-                  >
-                    x
-                  </p>
-                </div>
-              ) : (
-                <div className="relative">
-                  <input
-                    className="text-sm focus:outline-none"
-                    type="text"
-                    placeholder="Type Employee name"
-                    value={searchEmployeeQuery}
-                    onChange={(e) => setSearchEmployeeQuery(e.target.value)}
-                  />
-                  {searchEmployeeQuery && (
-                    <ul className="absolute bg-white shadow-md rounded mt-10 z-10 w-full max-h-40 overflow-y-auto">
-                      {filteredEmployeeResults.map((emp, index) => (
-                        <li
-                          key={index}
-                          onClick={() => handleSelect(emp)}
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                        >
-                          <strong>{emp}</strong>
-                        </li>
-                      ))}
-                      {filteredEmployeeResults.length === 0 && (
-                        <li className="px-4 py-2 text-gray-500">
-                          No matches found
-                        </li>
-                      )}
-                    </ul>
-                  )}
-                </div>
-              )}
-            </div>
-          </div> */}
       </div>
       <div className="flex flex-col gap-2">
         <div>
@@ -161,10 +112,11 @@ const Assign = ({
       </div>
 
       <button
+        disabled={roleSelected.length === 0}
         onClick={() => {
           setSetValue(2);
         }}
-        className={`rounded-lg border border-[#6a1039] bg-[#6a1039] w-full shadow-sm py-[0.625rem] text-sm font-semibold text-white cursor-pointer`}
+        className={`rounded-lg border border-[#6a1039] bg-[#6a1039] w-full shadow-sm py-[0.625rem] text-sm font-semibold text-white cursor-pointer disabled:cursor-not-allowed `}
       >
         Continue
       </button>
@@ -190,9 +142,36 @@ const Assign = ({
         <h5 className="text-[#15294b] text-xl font-semibold">
           Assign this role
         </h5>
-        <p>{`Select one or multiple employees to assign to this role “${roleSelected} “`}</p>
+        <p className="text-sm text-[#667085] ">Select one or multiple employees to assign to this role “<span className="text-[#6a1039] font-bold">{roleSelected}</span> “</p>
       </div>
-      <div className="relative w-full">
+      <div className=" w-full">
+        <div className="my-[1.44rem]">
+          {selectedEmployee.length > 0 && (
+            <div className="flex flex-wrap gap-2 items-center">
+              {selectedEmployee.map((emp) => (
+                <div
+                  className="flex gap-1 py-[0.125rem] px-2 rounded-2xl bg-[#f5f6f7]"
+                  key={emp.id}
+                >
+                  <img
+                    className="w-[1.125rem] h-[1.125rem] rounded-[12.5rem]"
+                    src={employeePng}
+                    alt=""
+                  />
+                  <p className="text-[#091e42] text-sm font-medium">
+                    {emp.name}
+                  </p>
+                  <p
+                    onClick={() => onRemove(emp)}
+                    className="text-xs cursor-pointer"
+                  >
+                    x
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
         <div className="relative">
           <img
             className="absolute w-5 h-5 -translate-y-1/2 top-1/2"
@@ -211,40 +190,53 @@ const Assign = ({
             src={helpCircleSvg}
             alt=""
           />
-        </div>
 
-        {searchEmployeeQuery && (
-          <ul className="absolute top-8 bg-white shadow-md w-full rounded  z-10  max-h-40 overflow-y-auto">
-            {filteredEmployeeResults.map((emp) => (
-              <li
-                key={emp.id}
-                onClick={() => handleSelect(emp)}
-                className="p-4 hover:bg-gray-100 cursor-pointer"
-              >
-                <div className="flex justify-between items-start">
-                  <div className="flex items-center gap-3">
-                    <img
-                      className="w-8 h-8 rounded-[12.5rem] "
-                      src={employeePng}
-                      alt=""
-                    />
-                    <div className="flex flex-col gap-1 text-sm">
-                      <p className="text-[#091e42] font-black">{emp.name}</p>
-                      <p className="text-[#6a1039]">
-                        {emp.role}, {emp.teams[0]}
-                      </p>
+          {searchEmployeeQuery && (
+            <ul className="absolute top-8 bg-white shadow-md w-full rounded  z-10  max-h-40 overflow-y-auto">
+              {filteredEmployeeResults.map((emp) => (
+                <li
+                  key={emp.id}
+                  onClick={() => handleSelect(emp)}
+                  className="p-4 hover:bg-[#fff2ea] cursor-pointer"
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex items-center gap-3">
+                      <img
+                        className="w-8 h-8 rounded-[12.5rem] "
+                        src={employeePng}
+                        alt=""
+                      />
+                      <div className="flex flex-col gap-1 text-sm">
+                        <p className="text-[#091e42] font-black">{emp.name}</p>
+                        <p className="text-[#6a1039]">
+                          {emp.role}, {emp.teams[0]}
+                        </p>
+                      </div>
                     </div>
+                    
                   </div>
-                  <input className="rounded-full " type="checkbox" />
-                </div>
-              </li>
-            ))}
-            {filteredEmployeeResults.length === 0 && (
-              <li className="px-4 py-2 text-gray-500">No matches found</li>
-            )}
-          </ul>
-        )}
+                </li>
+              ))}
+              {filteredEmployeeResults.length === 0 && (
+                <li className="px-4 py-2 text-gray-500">No matches found</li>
+              )}
+            </ul>
+          )}
+        </div>
       </div>
+
+      <button
+      disabled={selectedEmployee.length === 0}
+        onClick={() => {
+          navigate("/roles");
+          setIsConfirmed(false);
+          setSelectedEmployee([]);
+          setRoleSelected([]);
+        }}
+        className={`rounded-lg border border-[#6a1039] bg-[#6a1039] w-full shadow-sm py-[0.625rem] text-sm font-semibold text-white cursor-pointer disabled:cursor-not-allowed`}
+      >
+        Assign
+      </button>
     </div>
   );
 

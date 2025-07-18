@@ -22,13 +22,12 @@ const Roles = () => {
 
   const [isConfirmed, setIsConfirmed] = useState(false);
 
-
   const allEmployees = [...employees];
   const allRoles = [...new Set(employees.map((emp) => emp.role))];
 
   const navigate = useNavigate();
 
-  const [selectedEmployee, setSelectedEmployee] = useState("");
+  const [selectedEmployee, setSelectedEmployee] = useState([]);
   const [searchEmployeeQuery, setSearchEmployeeQuery] = useState("");
 
   const filteredEmployeeResults = allEmployees.filter((emp) => {
@@ -39,16 +38,27 @@ const Roles = () => {
     );
   });
 
-   const handleSelect = (emp) => {
-    if (!selectedEmployee.find((e) => e.id === emp.id)) {
-      setSelectedEmployee([...selectedEmployee, emp]);
-    }
+  const handleSelect = (emp) => {
+    setSelectedEmployee((prev) => {
+      const alreadyExists = prev.some((e) => e.id === emp.id);
+      return alreadyExists ? prev : [...prev, emp];
+    });
+
     setSearchEmployeeQuery("");
   };
 
-  const onRemove = () => {
-    setSelectedEmployee("");
-  };
+  // const onRemove = (emp) => {
+  //   setSelectedEmployee((prev)=> {
+  //     prev.filter((e)=> e.id !== emp.id)
+  //   });
+  // };
+
+  const onRemove = (emp) => {
+  setSelectedEmployee((prev) => 
+    prev.filter((e) => e.id !== emp.id)
+  );
+};
+
 
   // for searching roles
   const [roleSelected, setRoleSelected] = useState([]);
@@ -298,6 +308,8 @@ const Roles = () => {
       {isConfirmed && (
         <Assign
           selectedEmployee={selectedEmployee}
+          setSelectedEmployee={setSelectedEmployee}
+          setRoleSelected={setRoleSelected}
           setIsConfirmed={setIsConfirmed}
           onRemove={onRemove}
           onRemoveRole={onRemoveRole}

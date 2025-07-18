@@ -12,8 +12,8 @@ const SideBar = () => {
   return (
     <div className="fixed w-56 p-8 flex flex-col h-screen border-r border-gray-200 bg-white">
       <div className="flex items-center ">
-        <img className="h-10 object-cover" src={logoImg} alt="" />
-        <h3 className="">Aerten</h3>
+        <img className="w-12 h-12 object-cover" src={logoImg} alt="" />
+        <h3 className="text-[#1e1e1e] text-[1.375rem] font-bold">Aerten</h3>
       </div>
       <div className="flex flex-col gap-4  my-8">
         <SideBarList item={"Dashboard"} icon={<MdGroups3 />} />

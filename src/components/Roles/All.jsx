@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 const All = () => {
   return (
-    <div className="flex flex-wrap gap-[1.88rem]">
+    <div className="flex flex-wrap gap-[1rem]">
       {roles.map((role) => (
         <div
           key={role.id}
-          className=" px-[1.5rem] py-[1.41rem] border border-[#EFF1F4] rounded-[0.9375rem]"
+          className="w-[30rem] px-[1.5rem] py-[1.41rem] border border-[#EFF1F4] rounded-[0.9375rem]"
         >
           <div className="flex justify-between items-center">
             <p className="text-[#091e42] text-lg font-black ">{role.role}</p>
@@ -36,11 +36,7 @@ const All = () => {
           {/* manager */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <img className="w-[2.125rem] h-[2.125rem] rounded-full"  src={employeeAvatar} alt="" />
-              <div className="flex flex-col text-sm mr-8">
-                <p className=" text-[#0e2354]">James campion</p>
-                <p className="text-[#909dad]">Manager</p>
-              </div>
+              
             </div>
             <Link to={`/roles/${role.id}`} className="cursor-pointer">
                 <img className="w-8 h-8" src={arrowRightSvg} alt="" />

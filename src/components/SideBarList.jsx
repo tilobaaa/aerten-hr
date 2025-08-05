@@ -12,7 +12,6 @@ const SideBarList = ({ item, icon}) => {
             <div>{icon}</div>
           </div>
           <p>{item}</p>
-          {isActive && <BsArrowDown />}
         </div>
       )}
     </NavLink>

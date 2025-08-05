@@ -10,7 +10,7 @@ const Inbox = () => {
         <h5>Inbox</h5>
         <div className="relative w-72 border-1 border-[#80808025] rounded-xl">
           <img
-            className="absolute w-6 h-6 top-1/2 -translate-y-1/2"
+            className="absolute w-6 h-6 left-2 top-1/2 -translate-y-1/2 "
             src={searchSvg}
             alt=""
           />

@@ -68,8 +68,8 @@ const RolesDetails = () => {
             </h4>
             <button className="px-4 py-[0.62rem] border-1 rounded-md border-[#e6e7ec] flex gap-2 items-center cursor-pointer">
               <img className="h-5 w-5" src={editSvg} alt="" />
-              <p className="text-[#0e2354] text-sm ">{fullRole.role}</p>
-              <img className="h-5 w-5" src={helpCircleSvg} alt="" />
+              <p className="text-[#0e2354] text-sm ">Edit Role</p>
+              {/* <img className="h-5 w-5" src={helpCircleSvg} alt="" /> */}
             </button>
           </div>
 

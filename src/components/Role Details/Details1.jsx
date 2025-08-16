@@ -11,7 +11,7 @@ const Details1 = () => {
     <div className="basis-1/2 border-1 border-[#dff2e6] px-[2.44rem] py-[1.96rem] rounded-[0.9375rem]">
       <div className="pb-8 mb-8 border-b-1 border-[#eaecf0] flex justify-between">
         <p className="text-[#091e42] text-xl font-black">Role Details</p>
-        <div className="flex gap-2">
+        {/* <div className="flex gap-2">
           <img
             className="w-[2.125rem] h-[2.125rem] rounded-full"
             src={employeePng}
@@ -21,12 +21,12 @@ const Details1 = () => {
             <p className="text-sm text-[#0e2354]">James campion</p>
             <p className="text-[#909dad]">Manager</p>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="flex flex-col pb-[1.19rem] border-b-1 border-[#eaecf0]">
-        <p className="text-[#091e42] text-lg font-black">{fullRole.role}</p>
+        {/* <p className="text-[#091e42] text-lg font-black">{fullRole.role}</p> */}
         <p className="text-[#667085] text-sm font-medium">
-          <span className="text-[#091e42] font-black">Role Description: </span>
+          <span className="text-[#091e42] font-black"></span>
           {fullRole.desc}
         </p>
       </div>

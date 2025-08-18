@@ -53,9 +53,8 @@ const BasicDetails = ({formData, setFormData, selectedEmployees, setSelectedEmpl
           </p>
         </div>
         <button className="cursor-pointer border border-[#e6e7ec] rounded-[1.8125rem] flex items-center gap-2 py-[0.625rem] px-4 ">
-          <img className="w-4 h-4" src={plusSvg} alt="" />
-          <p className="text-[#0e2354] text-sm ">Reporting Manager</p>
-          <img className="w-4 h-4" src={helpCirtcle} alt="" />
+
+
         </button>
       </div>
       <div className="border-b border-[#eff1f4] w-full my-8"></div>
@@ -63,7 +62,7 @@ const BasicDetails = ({formData, setFormData, selectedEmployees, setSelectedEmpl
       <form className="grid grid-cols-3 gap-[1.56rem] mb-8">
         <div className="grid grid-rows-4 gap-4 text-sm">
           <input
-            className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82]"
+            className="px-[0.88rem] py-[0.62rem] border border-[#9a9b9c] rounded-md placeholder:text-[#5d6b82]  text-[#5d6b82]"
             type="text"
             placeholder="Title/name"
             name="role"
@@ -74,13 +73,13 @@ const BasicDetails = ({formData, setFormData, selectedEmployees, setSelectedEmpl
             name="desc"
             value={formData.desc}
             onChange={handleChange}
-            className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82] row-span-3"
+            className="px-[0.88rem] py-[0.62rem] border border-[#9a9b9c]  rounded-md text-[#5d6b82] placeholder:text-[#5d6b82] row-span-3 resize-none"
             placeholder="Description or Purpose"
           />
         </div>
         <div className="grid grid-rows-4 gap-4 text-sm">
           <select
-            className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82]"
+            className="px-[0.88rem] py-[0.62rem] border border-[#9a9b9c]  rounded-md text-[#5d6b82]"
             name="accessLevel"
             value={FormData.accessLevel}
             onChange={handleChange}
@@ -99,7 +98,7 @@ const BasicDetails = ({formData, setFormData, selectedEmployees, setSelectedEmpl
             </option>
           </select>
           <select
-            className="px-[0.88rem] py-[0.62rem] border border-[#eff1f4] rounded-md text-[#5d6b82]"
+            className="px-[0.88rem] py-[0.62rem] border border-[#9a9b9c]  rounded-md text-[#5d6b82]"
             name="jobType"
             id=""
             value={formData.jobType}
@@ -126,7 +125,7 @@ const BasicDetails = ({formData, setFormData, selectedEmployees, setSelectedEmpl
           </select>
 
           <input
-            className="py-[0.62rem] px-[0.875rem] border border-[#eff1f4] rounded-md"
+            className="py-[0.62rem] px-[0.875rem] border border-[#9a9b9c]  rounded-md"
             type="number"
             placeholder="Salary"
             name='salary'
@@ -136,7 +135,7 @@ const BasicDetails = ({formData, setFormData, selectedEmployees, setSelectedEmpl
 
 
            <input
-            className="py-[0.62rem] px-[0.875rem] border border-[#eff1f4] rounded-md"
+            className="py-[0.62rem] px-[0.875rem] border border-[#9a9b9c]  rounded-md"
             type="text"
             placeholder="Benefits"
             name='benefit'
@@ -146,11 +145,11 @@ const BasicDetails = ({formData, setFormData, selectedEmployees, setSelectedEmpl
         </div>
       </form>
 
-      <div className="p-8 border border-[#eff1f4] rounded-[0.625rem] w-[45rem]">
+      <div className="p-8 border border-[#9a9b9c]  rounded-[0.625rem] w-[45rem]">
         <p className="text-[#0e2354] text-[1rem] font-medium">
           Assign this role
         </p>
-        <div className="w-full border border-[#eff1f4] rounded-[0.25rem] my-4 p-4 relative">
+        <div className="w-full border border-[#9a9b9c]  rounded-[0.25rem] my-4 p-4 relative">
           <input
             className="w-full text-sm text-[#676e7e] font-medium focus:outline-none pl-6"
             type="text"

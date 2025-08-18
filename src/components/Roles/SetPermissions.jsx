@@ -16,7 +16,7 @@ const SetPermissions = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <img
+          {/* <img
             className="w-[2.125rem] h-[2.125rem] rounded-[12.5rem]"
             src={employeeAvatar}
             alt=""
@@ -24,7 +24,7 @@ const SetPermissions = () => {
           <div className="flex flex-col text-sm">
             <p className="text-[#0e2354]">James campion</p>
             <p className="text-[#909dad]">Reporting manager</p>
-          </div>
+          </div> */}
         </div>
       </div>
 

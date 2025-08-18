@@ -13,7 +13,7 @@ const EmployeeAceess = ({title}) => {
       </div>
 
       <div className="my-6 grid grid-cols-2 gap-[0.88rem]">
-        <div className=" flex gap-3 items-center px-2  border-b-1 border-[#eff1f4]">
+        <div className=" flex gap-3 items-center px-2  border-b-2 border-[#eff1f4]">
           <ToggleButton />
           <div className="flex flex-col py-4">
             <p className="text-[#091e42] text-sm font-bold">
@@ -24,7 +24,7 @@ const EmployeeAceess = ({title}) => {
             </p>
           </div>
         </div>
-        <div className=" flex gap-3 items-center   border-b-1 border-[#eff1f4]">
+        <div className=" flex gap-3 items-center   border-b-2 border-[#eff1f4]">
           <ToggleButton />
           <div className="flex flex-col py-4">
             <p className="text-[#091e42] text-sm font-bold">
@@ -36,7 +36,7 @@ const EmployeeAceess = ({title}) => {
             </p>
           </div>
         </div>
-        <div className="flex gap-3 items-center basis-1/2 border-b-1 border-[#eff1f4]">
+        <div className="flex gap-3 items-center basis-1/2 border-b-2 border-[#eff1f4]">
           <ToggleButton />
           <div className="flex flex-col py-4">
             <p className="text-[#091e42] text-sm font-bold">
@@ -47,7 +47,7 @@ const EmployeeAceess = ({title}) => {
             </p>
           </div>
         </div>
-        <div className="flex gap-3 items-center basis-1/2 border-b-1 border-[#eff1f4]">
+        <div className="flex gap-3 items-center basis-1/2 border-b-2 border-[#eff1f4]">
           <ToggleButton />
           <div className="flex flex-col py-4">
             <p className="text-[#091e42] text-sm font-bold">
